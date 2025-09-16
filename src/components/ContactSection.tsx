@@ -76,7 +76,7 @@ const ContactSection: React.FC = () => {
     {
       name: 'GitHub',
       icon: <Github className="w-5 h-5" />,
-      url: 'https://github.com/adityakumar9',
+      url: 'https://github.com/adiyakumar9',
     },
     {
       name: 'LinkedIn',
