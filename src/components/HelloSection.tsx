@@ -8,10 +8,10 @@ const HelloSection: React.FC = () => {
   const [isChatActive, setIsChatActive] = useState<boolean>(false);
   const [initialChatMessage, setInitialChatMessage] = useState<string>('');
   const phrases: string[] = [
-    'Front-end Developer',
-    'UI/UX Enthusiast',
-    'React Specialist',
-    'Problem Solver',
+    'Full-stack Software Engineer',
+    'Architecting Scalable Systems',
+    'Real-time Data Processing Expert',
+    'Fraud Detection Implementer',
   ];
 
   useEffect(() => {

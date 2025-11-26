@@ -23,27 +23,48 @@ const educationData: Education[] = [
     degree: "Bachelor of Technology",
     field: "Computer Science and Engineering",
     institution: "Amity University Lucknow",
-    period: "2018 – 2022",
+    period: "Aug 2018 – May 2022",
     courses: [
       {
         name: "Data Structures & Algorithms",
         icon: <Code className="w-5 h-5" />,
-        description: "Advanced problem solving and optimization techniques",
+        description: "Mastered advanced problem-solving techniques and optimization strategies for complex computational challenges",
         technologies: ["C++", "Java", "Python"]
       },
       {
-        name: "Object-Oriented Programming",
-        icon: <Database className="w-5 h-5" />,
-        description: "Software design patterns and principles",
-        technologies: ["Java", "Design Patterns", "SOLID"]
+        name: "Distributed Systems",
+        icon: <Globe className="w-5 h-5" />,
+        description: "Built distributed task scheduler using message queues for scalable, fault-tolerant architectures",
+        technologies: ["Message Queues", "Concurrency", "Networking"]
       },
       {
-        name: "Web Technologies",
-        icon: <Globe className="w-5 h-5" />,
-        description: "Modern web development and frameworks",
-        technologies: ["React", "Node.js", "MongoDB"]
+        name: "Database Management",
+        icon: <Database className="w-5 h-5" />,
+        description: "Comprehensive study of relational and non-relational database design and optimization",
+        technologies: ["PostgreSQL", "MongoDB", "SQL"]
+      },
+      {
+        name: "Software Architecture",
+        icon: <Code className="w-5 h-5" />,
+        description: "Designed real-time collaboration tools with focus on scalable system design patterns",
+        technologies: ["Microservices", "Design Patterns", "SOLID"]
       }
     ]
+  }
+];
+
+const certificationsData = [
+  {
+    title: "Angular Certification - HackerRank",
+    achievement: "Top 5% Score",
+    date: "Valid from Nov 2022",
+    icon: <Award className="w-5 h-5" />
+  },
+  {
+    title: "Python (Basic) - HackerRank",
+    achievement: "Certified",
+    date: "Verified",
+    icon: <Award className="w-5 h-5" />
   }
 ];
 
@@ -130,6 +151,29 @@ const CourseCard: React.FC<{ course: Course; index: number }> = ({ course, index
   );
 };
 
+// Certification card component
+const CertificationCard: React.FC<{ cert: typeof certificationsData[0]; index: number }> = ({ cert, index }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.2 }}
+      className="p-4 rounded-lg bg-gray-800/30 border border-gray-700/50 hover:border-emerald-500/30 transition-all duration-300"
+    >
+      <div className="flex items-start gap-3">
+        <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400 flex-shrink-0">
+          {cert.icon}
+        </div>
+        <div className="flex-1">
+          <h4 className="text-white font-semibold">{cert.title}</h4>
+          <p className="text-emerald-400 text-sm">{cert.achievement}</p>
+          <p className="text-gray-400 text-xs mt-1">{cert.date}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const EducationSection: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -181,7 +225,7 @@ const EducationSection: React.FC = () => {
               <GraduationCap className="w-10 h-10" />
             </motion.span>
             <span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
-              education
+              education & certifications
             </span>
           </h2>
         </motion.div>
@@ -219,13 +263,34 @@ const EducationSection: React.FC = () => {
             </div>
 
             {/* Courses Grid */}
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
-              {edu.courses.map((course, i) => (
-                <CourseCard key={i} course={course} index={i} />
-              ))}
+            <div>
+              <h4 className="text-lg font-semibold text-emerald-400 mb-4">Relevant Coursework</h4>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {edu.courses.map((course, i) => (
+                  <CourseCard key={i} course={course} index={i} />
+                ))}
+              </div>
             </div>
           </motion.div>
         ))}
+
+        {/* Certifications Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4 }}
+          className="mt-16 space-y-6"
+        >
+          <h3 className="text-2xl font-bold text-white flex items-center gap-2">
+            <Sparkles className="w-6 h-6 text-emerald-400" />
+            Professional Certifications
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {certificationsData.map((cert, i) => (
+              <CertificationCard key={i} cert={cert} index={i} />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

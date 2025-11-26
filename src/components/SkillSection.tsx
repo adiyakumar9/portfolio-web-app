@@ -1,8 +1,8 @@
 import React, { useMemo, useCallback } from 'react';
 // import { motion, usePresence, useReducedMotion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaReact, FaAngular, FaJs, FaHtml5, FaCss3, FaGit } from 'react-icons/fa';
-import { SiTypescript, SiNextdotjs, SiRedux, SiWebpack, SiFigma, SiPostman, SiMongodb, SiFirebase, SiMysql } from 'react-icons/si';
+import { FaReact, FaAngular, FaJs, FaHtml5, FaCss3, FaGit, FaDocker, FaAws, FaNode } from 'react-icons/fa';
+import { SiTypescript, SiNextdotjs, SiRedux, SiWebpack, SiFigma, SiPostman, SiMongodb, SiPostgresql, SiGraphql } from 'react-icons/si';
 
 interface Skill {
   name: string;
@@ -15,28 +15,37 @@ interface SkillsData {
 
 // Move data outside component
 const skillsData: SkillsData = {
-  languages: [
-    { name: 'JavaScript', icon: <FaJs /> },
-    { name: 'TypeScript', icon: <SiTypescript /> },
-    { name: 'HTML', icon: <FaHtml5 /> },
-    { name: 'CSS', icon: <FaCss3 /> },
-  ],
-  frameworks: [
-    { name: 'React', icon: <FaReact /> },
+  'Frontend Frameworks': [
+    { name: 'React.js', icon: <FaReact /> },
+    { name: 'Next.js', icon: <SiNextdotjs /> },
     { name: 'Angular', icon: <FaAngular /> },
-    // { name: 'Next.js', icon: <SiNextdotjs /> },
+    { name: 'TypeScript', icon: <SiTypescript /> },
+  ],
+  'Backend & APIs': [
+    { name: 'Node.js', icon: <FaNode /> },
+    { name: 'GraphQL', icon: <SiGraphql /> },
+    { name: 'Express.js', icon: <FaNode /> },
+    { name: 'RESTful APIs', icon: <SiPostman /> },
+  ],
+  'State Management': [
     { name: 'Redux', icon: <SiRedux /> },
+    { name: 'RxJS', icon: <FaNode /> },
+    { name: 'React Query', icon: <FaReact /> },
   ],
-  tools: [
-    { name: 'Git', icon: <FaGit /> },
-    { name: 'Webpack', icon: <SiWebpack /> },
-    { name: 'Figma', icon: <SiFigma /> },
-    { name: 'Postman', icon: <SiPostman /> },
-  ],
-  databases: [
+  'Databases': [
+    { name: 'PostgreSQL', icon: <SiPostgresql /> },
     { name: 'MongoDB', icon: <SiMongodb /> },
-    // { name: 'Firebase', icon: <SiFirebase /> },
-    // { name: 'MySQL', icon: <SiMysql /> },
+  ],
+  'Tools & DevOps': [
+    { name: 'Git', icon: <FaGit /> },
+    { name: 'Docker', icon: <FaDocker /> },
+    { name: 'AWS', icon: <FaAws /> },
+    { name: 'Webpack', icon: <SiWebpack /> },
+  ],
+  'Core Technologies': [
+    { name: 'JavaScript (ES6+)', icon: <FaJs /> },
+    { name: 'HTML5', icon: <FaHtml5 /> },
+    { name: 'CSS3', icon: <FaCss3 /> },
   ],
 };
 
@@ -138,11 +147,11 @@ const SkillsSection: React.FC = () => {
               &gt;
             </span>
             <span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
-              My Skills Arsenal
+              Technical Arsenal
             </span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            A curated collection of technologies I work with to bring ideas to life
+            A comprehensive suite of technologies and tools I leverage to architect scalable, high-performance systems
           </p>
         </div>
 

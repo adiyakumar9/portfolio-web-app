@@ -6,7 +6,7 @@ const AboutMe = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const skills = [
-    'React', 'Angular', 'Node.js', 'TypeScript', 'Blockchain'
+    'Next.js', 'React.js', 'Angular', 'Node.js', 'GraphQL', 'PostgreSQL', 'Microservices', 'Fraud Detection'
   ];
 
   return (
@@ -42,19 +42,13 @@ const AboutMe = () => {
           >
             <div className="space-y-6">
               <p className="text-gray-300 text-lg leading-relaxed">
-                Full-stack developer specializing in web applications and blockchain solutions. 
-                Building scalable systems with focus on performance and exceptional user experiences.
+                I am a **Full-stack Software Engineer** with **3+ years of experience** in architecting complex web applications and distributed systems. My focus is on building highly **scalable frontend architectures** using Next.js, React.js, and Angular, seamlessly integrated with robust backends built on Node.js and GraphQL.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Evolved from intern to Software Developer at
-                <span className="text-emerald-400 mx-1">ITH Technologies</span>
-                (2022-2024). Now freelancing 
-                <span className="text-emerald-400 ml-1">(2024-Present)</span>, 
-                crafting innovative solutions for global clients.
+                I have a proven track record of implementing sophisticated, high-impact features, including **real-time trading systems**, **fraud detection mechanisms**, and **multi-tenant Role-Based Access Control (RBAC)** systems. I thrive on solving challenging technical problems that require deep understanding of system architecture and performance optimization.
               </p>
               <p className="text-gray-300 text-lg leading-relaxed">
-                Experienced in building social platforms, event systems, and blockchain applications. 
-                Always exploring new technologies and embracing challenges.
+                Currently, I am driving full-stack development of enterprise-grade media technology platforms at **DEVtrust**, focusing on delivering high-performance, secure, and data-intensive applications.
               </p>
             </div>
 
