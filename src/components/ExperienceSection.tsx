@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
-import { Terminal, Code, GitBranch, Radio, Boxes } from 'lucide-react';
+import { Terminal, Code, GitBranch, Radio, Boxes, Shield, Zap, Lock, Activity } from 'lucide-react';
 
 interface Experience {
   id: string;
@@ -17,35 +17,54 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    id: 'sde',
-    title: "Software Developer",
-    company: "ITH Technologies Pvt. Ltd.",
-    period: "Aug 2022 – Jan 2024",
+    id: 'devtrust',
+    title: "Software Development Engineer (SDE)",
+    company: "DEVtrust - DevTech Enterprises Pvt. Ltd.",
+    period: "Apr 2025 - Present",
     type: 'full-time',
-    icon: <Terminal className="w-6 h-6" />,
+    icon: <Shield className="w-6 h-6" />,
     color: "#10B981",
-    description: "Leading development across multiple cutting-edge projects including T-Pro, a comprehensive project management system where I implemented secure routing authentication and real-time analytics dashboards. Architected Social Collider, a task-based social media platform integrating multiple APIs (Twitter, Telegram, YouTube) with a reward system for user engagement. Spearheaded the development of TDX Launchpad, a pioneering cross-chain superdApp that enables seamless transactions between blockchain ecosystems. Also developed the Event Management System (EMS) with multiple user roles and comprehensive features for sponsors, exhibitors, speakers, and attendees. Consistently focused on performance optimization and user experience, implementing responsive designs and reducing load times through efficient code architecture.",
-    technologies: ['Angular', 'React', 'Node.js', 'MongoDB', 'Redis', 'TypeScript'],
+    description: "Leading full-stack development of MediaIntercept, a sophisticated media analytics and tracking platform serving 10,000+ daily active users. My work focuses on architecting scalable, high-performance systems with a strong emphasis on data integrity, security, and real-time processing.",
+    technologies: ['Next.js', 'Node.js', 'GraphQL', 'PostgreSQL', 'Microservices', 'Fraud Detection'],
     highlights: [
-      "Architected T-Pro's frontend with React Query and Formik, implementing secure routing and real-time analytics visualization",
-      "Developed TDX Launchpad's cross-chain protocol (CCP) enabling seamless multi-chain transactions and token management",
-      "Built Social Collider platform integrating Twitter, Telegram, and YouTube APIs with reward system implementation"
+      "Architected and implemented an advanced link tracking system with **fraud detection capabilities**, reducing invalid traffic by **40%** through bot detection algorithms and duplicate click filtering.",
+      "Designed and built a complex **multi-tenant role-based access control system** (RBAC) supporting multiple-to-multiple role assignments, enabling granular permission management across 50+ different user actions.",
+      "Implemented **GraphQL API** architecture with query optimization, reducing API response times by **60%** and network overhead by **45%**.",
+      "Developed a dynamic multi-destination URL routing system with intelligent load balancing, handling **100,000+ redirects daily** with sub-100ms response times.",
+      "Built real-time analytics dashboard using Next.js and WebSockets for live tracking of media campaign performance metrics."
     ]
   },
   {
-    id: 'trainee',
+    id: 'ith-sde',
+    title: "Software Development Engineer (SDE-1)",
+    company: "ITH Technologies Pvt. Ltd",
+    period: "Aug 2022 – Jan 2024",
+    type: 'full-time',
+    icon: <Zap className="w-6 h-6" />,
+    color: "#3B82F6",
+    description: "Focused on building scalable Angular applications and optimizing performance for high-traffic enterprise systems. Key contributions involved developing robust authentication and state management solutions.",
+    technologies: ['Angular', 'RxJS', 'JWT', 'TypeScript', 'Node.js'],
+    highlights: [
+      "Architected scalable Angular applications with complex state management using RxJS, serving **5,000+ concurrent users**.",
+      "Developed sophisticated authentication system with **JWT token management**, refresh token rotation, and multi-factor authentication.",
+      "Optimized application performance achieving **95+ Lighthouse score** through code splitting, lazy loading, and strategic caching.",
+      "Built reusable component library with **40+ components**, reducing development time by **35%** across multiple projects."
+    ]
+  },
+  {
+    id: 'ith-trainee',
     title: "Software Engineer Trainee",
-    company: "ITH Technologies Pvt. Ltd.",
+    company: "ITH Technologies Pvt. Ltd",
     period: "Feb 2022 – Aug 2022",
     type: 'internship',
     icon: <Code className="w-6 h-6" />,
-    color: "#3B82F6",
-    description: "Took ownership of the Oshodhara project, an event booking platform focused on Osho teachings, where I led the development of the admin panel and booking system from scratch. Implemented comprehensive event management features including complex booking systems for various program types, room reservations, and sadhak modules. Designed and developed the user interface using HTML, CSS, and JavaScript, while creating reusable components with AngularJS. Integrated secure authentication and role-based access control, along with RESTful APIs for seamless data flow. Also contributed to BizThon 2.0, implementing routing authentication and role-based functionality for admin, user, and judge panels, showcasing ability to handle multiple user interfaces and complex system interactions.",
-    technologies: ['AngularJS', 'JavaScript', 'RESTful APIs', 'HTML/CSS'],
+    color: "#F59E0B",
+    description: "Gained foundational experience in full-stack development by contributing to the enterprise booking management system, focusing on real-time data synchronization and automated testing.",
+    technologies: ['Angular', 'WebSocket', 'Jasmine', 'Karma'],
     highlights: [
-      "Developed complete admin panel with booking management system for programs and events",
-      "Implemented complex booking features for programs, sadhak modules, and room reservations",
-      "Created dynamic forms and lists for event management, increasing admin efficiency by 35%"
+      "Developed complex Angular components for enterprise booking management system handling **1,000+ daily transactions**.",
+      "Implemented **real-time data synchronization** using WebSocket connections for live booking updates.",
+      "Created automated testing suite with **85% code coverage** using Jasmine and Karma."
     ]
   }
 ];
@@ -86,12 +105,19 @@ const ExperienceCard: React.FC<{
     }
   };
 
+  const getIconForHighlight = (index: number) => {
+    const icons = [GitBranch, Radio, Boxes, Lock, Activity];
+    const Icon = icons[index % icons.length];
+    return <Icon className="w-4 h-4" />;
+  }
+
   return (
     <motion.div
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
+      transition={{ delay: index * 0.1 }}
       className={`
         relative rounded-xl transition-all duration-500 ease-out
         ${isActive ? 'col-span-2 row-span-2' : 'col-span-1'}
@@ -172,7 +198,7 @@ const ExperienceCard: React.FC<{
                 className="mt-6 overflow-hidden"
               >
                 <p className="text-gray-300 mb-4">{experience.description}</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {experience.highlights.map((highlight, index) => (
                     <div
                       key={highlight}
@@ -180,9 +206,7 @@ const ExperienceCard: React.FC<{
                                hover:border-emerald-500/20 transition-all duration-300"
                     >
                       <div className="text-emerald-400 mb-2">
-                        {index === 0 && <GitBranch className="w-4 h-4" />}
-                        {index === 1 && <Radio className="w-4 h-4" />}
-                        {index === 2 && <Boxes className="w-4 h-4" />}
+                        {getIconForHighlight(index)}
                       </div>
                       <p className="text-sm text-gray-300">{highlight}</p>
                     </div>
@@ -213,7 +237,7 @@ const ExperienceSection: React.FC = () => {
   );
 
   
-
+  
   return (
     <section 
       ref={containerRef}

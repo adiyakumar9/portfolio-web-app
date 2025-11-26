@@ -35,7 +35,7 @@ const App: React.FC = () => {
 
   // Typing animation effect
   useEffect(() => {
-    const text = "Front-end developer";
+    const text = "Full-stack Software Engineer | Architecting Scalable Systems";
     let index = 0;
     const element = typingRef.current;
 
